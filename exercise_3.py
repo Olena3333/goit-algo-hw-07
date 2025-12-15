@@ -9,20 +9,19 @@ class AVLNode:
 def insert(root, key):
     if not root:
         return AVLNode(key)
+
     if key < root.key:
         root.left = insert(root.left, key)
     elif key > root.key:
         root.right = insert(root.right, key)
+
     return root
 
 
-def find_min(root):
-    if root is None:
-        return None
-    current = root
-    while current.left:
-        current = current.left
-    return current.key
+def sum_of_tree(node):
+    if node is None:
+        return 0
+    return node.key + sum_of_tree(node.left) + sum_of_tree(node.right)
 
 
 if __name__ == "__main__":
@@ -32,5 +31,5 @@ if __name__ == "__main__":
     for key in keys:
         root = insert(root, key)
 
-    print("Найменше значення в дереві:", find_min(root))
-
+    total_sum = sum_of_tree(root)
+    print("Сума всіх значень у дереві:", total_sum)
