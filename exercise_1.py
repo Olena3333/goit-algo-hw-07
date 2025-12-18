@@ -14,16 +14,13 @@ def insert(root, key):
         root.left = insert(root.left, key)
     elif key > root.key:
         root.right = insert(root.right, key)
-    else:
-        return root
-
     return root
 
 
-def min_value_node(node):
+def max_value_node(node):
     current = node
-    while current.left is not None:
-        current = current.left
+    while current.right is not None:
+        current = current.right
     return current
 
 
@@ -34,7 +31,9 @@ if __name__ == "__main__":
     for key in keys:
         root = insert(root, key)
 
-    min_node = min_value_node(root)
-    print("Найменше значення:", min_node.key)
+    max_node = max_value_node(root)
+
+    print("Найбільше значення:", max_node.key)
+
 
 
